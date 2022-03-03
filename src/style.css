@@ -107,8 +107,9 @@ body {
 .mouth .up .left-lip {
   border: 3px solid #000;
   width: 80px;
-  height: 20px;
-  border-radius: 0 0 0 70px;
+  height: 25px;
+  /* 水平方向 垂直方向 */
+  border-bottom-left-radius: 60px 30px;
   transform: rotate(20deg);
   position: absolute;
   top: -12px;
@@ -121,8 +122,9 @@ body {
 .mouth .up .right-lip {
   border: 3px solid #000;
   width: 80px;
-  height: 20px;
+  height: 25px;
   border-radius: 0 0 90px 0;
+  border-bottom-right-radius: 60px 30px;
   position: absolute;
   left: 50%;
   top: -12px;
