@@ -29,12 +29,14 @@ body {
   margin-left: -2.1em;
   top: 50%;
   margin-top: -1.2em;
+  /* border: 1px solid green; */
 }
 
 /* ----------------------------------------- */
 /* ----------------------------------------- */
 
 /* 下面是鼻子 */
+
 .triangle {
   /* position: relative; */
   position: absolute;
@@ -59,6 +61,46 @@ body {
   left: -10px;
   border-radius: 100% 100% 0 0;
 }
+
+/* 实现鼠标hover时，鼻子的晃动效果 */
+@-webkit-keyframes wave {
+  0% {
+  }
+  25% {
+    transform: rotate(4deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-4deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes wave {
+  0% {
+  }
+  25% {
+    transform: rotate(4deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-4deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.triangle:hover {
+  -webkit-animation: wave 300ms infinite linear;
+  animation: wave 300ms infinite linear;
+}
+
 /* ----------------------------------------- */
 /* ----------------------------------------- */
 
@@ -169,7 +211,7 @@ body {
   width: 100%;
   border-bottom-left-radius: 50% 80%;
   border-bottom-right-radius: 50% 80%;
-  top: -202%;
+  top: -213%;
   overflow: hidden;
   /* z-index: 0.9; */
 }
@@ -180,10 +222,36 @@ body {
   background-color: #ff485f;
   height: 170px;
   width: 170px;
-  top: 373px;
+  top: 382px;
   left: -3px;
   border-top-left-radius: 50% 80%;
   border-top-right-radius: 50% 80%;
   /* top: 30px; */
   /* z-index: 0.1; */
+}
+/* ----------------------------------------- */
+/* ----------------------------------------- */
+
+/* 下面是脸颊 */
+.cheek {
+  position: absolute;
+  border: 2px solid black;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+}
+
+/* 如果是同一层级，那么中间不能有空格 */
+.cheek.left {
+  /* transform: translateX(-190px); */
+  background-color: #ff0000;
+  margin-left: -190px;
+}
+
+.cheek.right {
+  /* transform: translateX(110px); */
+  background-color: #ff0000;
+  margin-left: 110px;
 }
