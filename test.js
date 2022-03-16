@@ -10,28 +10,9 @@ const btnNormal = document.querySelector(".btnNormalSpeed");
 const btnFast = document.querySelector(".btnFastSpeed");
 const btnHighSpeed = document.querySelector(".btnHighSpeed");
 
-// textPart.innerText = "Hello!";
-
-textPart.scrollIntoView(false);
-
 let n = 0;
 
-// let printCSS = setInterval(() => {
-//   n = n + 1;
-
-//   console.log(n);
-//   if (n > cssString.length) {
-//     clearInterval(print);
-//     return;
-//   }
-
-//   console.log(cssString.substring(0, n));
-//   //   输出从第0位到第n-1位，第n位是不会输出的
-//   textPart.innerHTML = cssString.substring(0, n);
-//   //   相隔300毫秒执行这个匿名函数
-// }, 0);
-
-let timerSpeed = 200;
+let timerSpeed = 150;
 
 let print = setInterval(() => {
   n = n + 1;
@@ -63,53 +44,49 @@ let renderTextAndHtml = function () {
     clearInterval(print);
     return;
   }
-
-  console.log(cssString.substring(0, n));
-
   textPart.innerText = cssString.substring(0, n);
-
   textPart.scrollTop = textPart.scrollHeight;
-
   cssPart.innerHTML = cssString.substring(0, n);
 };
 
 // 暂停功能
 btnPause.onclick = () => {
-  window.clearInterval(print);
+  clearInterval(print);
 };
 
 // 播放功能
 btnPlay.onclick = () => {
-  // 让计时器部分继续进行就可以了
+  // 这里也要清除计时器，避免同时产生多个计时器而无法控制
+  clearInterval(print);
+  // z这里之所以要将奇迹是再次赋值给print，是为了下一次暂停时能够clearInterval(print)
   print = setInterval(() => {
     renderTextAndHtml();
   }, timerSpeed);
 };
 
 // 慢速功能
-btnSlow.onclick = () => {
-  window.clearInterval(print);
+btnSlow.addEventListener("click", () => {
+  clearInterval(print);
   timerSpeed = 400;
-  timer();
-};
+  print = setInterval(() => {
+    renderTextAndHtml();
+  }, timerSpeed);
+});
 
 // 常速功能
-btnSlow.onclick = () => {
-  window.clearInterval(print);
-  timerSpeed = 200;
-  timer();
+btnNormal.onclick = () => {
+  clearInterval(print);
+  timerSpeed = 150;
+  print = setInterval(() => {
+    renderTextAndHtml();
+  }, timerSpeed);
 };
 
 // 快速功能
-btnSlow.onclick = () => {
-  window.clearInterval(print);
-  timerSpeed = 100;
-  timer();
-};
-
-// 急速功能
-btnSlow.onclick = () => {
-  window.clearInterval(print);
+btnFast.onclick = () => {
+  clearInterval(print);
   timerSpeed = 0;
-  timer();
+  print = setInterval(() => {
+    renderTextAndHtml();
+  }, timerSpeed);
 };
