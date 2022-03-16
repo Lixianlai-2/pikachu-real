@@ -49,44 +49,44 @@ let renderTextAndHtml = function () {
   cssPart.innerHTML = cssString.substring(0, n);
 };
 
+let runTimer = function () {
+  setInterval(renderTextAndHtml, timerSpeed);
+};
+
+let pauseTimer = function () {
+  clearInterval(print);
+};
+
 // 暂停功能
 btnPause.onclick = () => {
-  clearInterval(print);
+  pauseTimer();
 };
 
 // 播放功能
 btnPlay.onclick = () => {
   // 这里也要清除计时器，避免同时产生多个计时器而无法控制
-  clearInterval(print);
+  pauseTimer();
   // z这里之所以要将奇迹是再次赋值给print，是为了下一次暂停时能够clearInterval(print)
-  print = setInterval(() => {
-    renderTextAndHtml();
-  }, timerSpeed);
+  print = runTimer();
 };
 
 // 慢速功能
 btnSlow.addEventListener("click", () => {
-  clearInterval(print);
+  pauseTimer();
   timerSpeed = 400;
-  print = setInterval(() => {
-    renderTextAndHtml();
-  }, timerSpeed);
+  print = runTimer();
 });
 
 // 常速功能
 btnNormal.onclick = () => {
-  clearInterval(print);
+  pauseTimer();
   timerSpeed = 150;
-  print = setInterval(() => {
-    renderTextAndHtml();
-  }, timerSpeed);
+  print = runTimer();
 };
 
 // 快速功能
 btnFast.onclick = () => {
-  clearInterval(print);
+  pauseTimer();
   timerSpeed = 0;
-  print = setInterval(() => {
-    renderTextAndHtml();
-  }, timerSpeed);
+  print = runTimer();
 };
