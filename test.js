@@ -31,6 +31,8 @@ let n = 0;
 //   //   相隔300毫秒执行这个匿名函数
 // }, 0);
 
+let timerSpeed = 200;
+
 let print = setInterval(() => {
   n = n + 1;
 
@@ -51,9 +53,63 @@ let print = setInterval(() => {
 
   //优化代码，让渲染部分跟文字部分都处于同一个计时器
   cssPart.innerHTML = cssString.substring(0, n);
-}, 0);
+}, timerSpeed);
+
+let renderTextAndHtml = function () {
+  n = n + 1;
+
+  console.log(n);
+  if (n > cssString.length) {
+    clearInterval(print);
+    return;
+  }
+
+  console.log(cssString.substring(0, n));
+
+  textPart.innerText = cssString.substring(0, n);
+
+  textPart.scrollTop = textPart.scrollHeight;
+
+  cssPart.innerHTML = cssString.substring(0, n);
+};
 
 // 暂停功能
 btnPause.onclick = () => {
-  clearInterval(printText);
+  window.clearInterval(print);
+};
+
+// 播放功能
+btnPlay.onclick = () => {
+  // 让计时器部分继续进行就可以了
+  print = setInterval(() => {
+    renderTextAndHtml();
+  }, timerSpeed);
+};
+
+// 慢速功能
+btnSlow.onclick = () => {
+  window.clearInterval(print);
+  timerSpeed = 400;
+  timer();
+};
+
+// 常速功能
+btnSlow.onclick = () => {
+  window.clearInterval(print);
+  timerSpeed = 200;
+  timer();
+};
+
+// 快速功能
+btnSlow.onclick = () => {
+  window.clearInterval(print);
+  timerSpeed = 100;
+  timer();
+};
+
+// 急速功能
+btnSlow.onclick = () => {
+  window.clearInterval(print);
+  timerSpeed = 0;
+  timer();
 };

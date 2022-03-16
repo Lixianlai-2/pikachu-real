@@ -272,19 +272,6 @@ body {
   background-color: #ff0000;
   margin-left: 110px;
 }
-
-.cheek.left a img {
-  position: relative;
-  right: 100px;
-  /* 一种将元素围绕一个定点（由transform-origin属性指定）旋转而不变形的转换 */
-  transform: rotateY(180deg);
-}
-
-.cheek.right a img {
-  position: relative;
-  right: -40px;
-  /* transform: translateY(90deg); */
-}
 `;
 
 export default cssString;
