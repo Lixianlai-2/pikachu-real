@@ -68,24 +68,6 @@ let playFeature = () => {
   print = runTimer();
 };
 
-let slowPlayFeature = () => {
-  pauseTimer();
-  timerSpeed = 400;
-  print = runTimer();
-};
-
-let normalPlayFeature = () => {
-  pauseTimer();
-  timerSpeed = 100;
-  print = runTimer();
-};
-
-let fastPlayFeature = () => {
-  pauseTimer();
-  timerSpeed = 0;
-  print = runTimer();
-};
-
 // 暂停功能
 btnPause.onclick = pauseFeature;
 
@@ -93,13 +75,40 @@ btnPause.onclick = pauseFeature;
 btnPlay.onclick = playFeature;
 
 // 慢速功能
-btnSlow.onclick = slowPlayFeature;
+btnSlow.onclick = () => {
+  timerSpeed = 400;
+  playFeature();
+};
 
 // 常速功能
-btnNormal.onclick = normalPlayFeature;
+btnNormal.onclick = () => {
+  timerSpeed = 100;
+  playFeature();
+};
 
 // 快速功能
-btnFast.onclick = fastPlayFeature;
+btnFast.onclick = () => {
+  timerSpeed = 0;
+  playFeature();
+};
+
+// let slowPlayFeature = () => {
+//   pauseTimer();
+//   timerSpeed = 400;
+//   print = runTimer();
+// };
+
+// let normalPlayFeature = () => {
+//   pauseTimer();
+//   timerSpeed = 100;
+//   print = runTimer();
+// };
+
+// let fastPlayFeature = () => {
+//   pauseTimer();
+//   timerSpeed = 0;
+//   print = runTimer();
+// };
 
 // // 播放功能
 // btnPlay.onclick = () => {
