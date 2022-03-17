@@ -8,12 +8,9 @@ const btnPlay = document.querySelector(".btnPlay");
 const btnSlow = document.querySelector(".btnSlowSpeed");
 const btnNormal = document.querySelector(".btnNormalSpeed");
 const btnFast = document.querySelector(".btnFastSpeed");
-const btnHighSpeed = document.querySelector(".btnHighSpeed");
 
 let n = 0;
-
 let timerSpeed = 150;
-
 let print = setInterval(() => {
   n = n + 1;
 
@@ -69,21 +66,18 @@ const player = {
   },
 
   slowPlayFeature() {
-    player.pauseTimer();
     timerSpeed = 400;
-    print = player.runTimer();
+    player.playFeature();
   },
 
   normalPlayFeature() {
-    player.pauseTimer();
     timerSpeed = 100;
-    print = player.runTimer();
+    player.playFeature();
   },
 
   fastPlayFeature() {
-    player.pauseTimer();
     timerSpeed = 0;
-    print = player.runTimer();
+    player.playFeature();
   },
 };
 
