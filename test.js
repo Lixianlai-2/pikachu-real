@@ -49,48 +49,77 @@ let renderTextAndHtml = function () {
   cssPart.innerHTML = cssString.substring(0, n);
 };
 
-let runTimer = function () {
-  return setInterval(renderTextAndHtml, timerSpeed);
-};
+const player = {
+  runTimer() {
+    return setInterval(renderTextAndHtml, timerSpeed);
+  },
 
-let pauseTimer = function () {
-  clearInterval(print);
-};
+  pauseTimer() {
+    clearInterval(print);
+  },
 
-let pauseFeature = () => {
-  pauseTimer();
-};
+  pauseFeature() {
+    // 整个对象中的pauseTimer属性
+    player.pauseTimer();
+  },
 
-let playFeature = () => {
-  // 这里也要清除计时器，避免同时产生多个计时器而无法控制
-  pauseTimer();
-  // z这里之所以要将奇迹是再次赋值给print，是为了下一次暂停时能够clearInterval(print)
-  print = runTimer();
+  playFeature() {
+    player.pauseTimer();
+    print = player.runTimer();
+  },
+
+  slowPlayFeature() {
+    player.pauseTimer();
+    timerSpeed = 400;
+    print = player.runTimer();
+  },
+
+  normalPlayFeature() {
+    player.pauseTimer();
+    timerSpeed = 100;
+    print = player.runTimer();
+  },
+
+  fastPlayFeature() {
+    player.pauseTimer();
+    timerSpeed = 0;
+    print = player.runTimer();
+  },
 };
 
 // 暂停功能
-btnPause.onclick = pauseFeature;
+btnPause.onclick = player.pauseFeature;
 
 // 播放功能
-btnPlay.onclick = playFeature;
+btnPlay.onclick = player.playFeature;
 
 // 慢速功能
-btnSlow.onclick = () => {
-  timerSpeed = 400;
-  playFeature();
-};
+btnSlow.onclick = player.slowPlayFeature;
 
 // 常速功能
-btnNormal.onclick = () => {
-  timerSpeed = 100;
-  playFeature();
-};
+btnNormal.onclick = player.normalPlayFeature;
 
 // 快速功能
-btnFast.onclick = () => {
-  timerSpeed = 0;
-  playFeature();
-};
+btnFast.onclick = player.fastPlayFeature;
+
+// let runTimer = function () {
+//   return setInterval(renderTextAndHtml, timerSpeed);
+// };
+
+// let pauseTimer = function () {
+//   clearInterval(print);
+// };
+
+// let pauseFeature = () => {
+//   pauseTimer();
+// };
+
+// let playFeature = () => {
+//   // 这里也要清除计时器，避免同时产生多个计时器而无法控制
+//   pauseTimer();
+//   // z这里之所以要将奇迹是再次赋值给print，是为了下一次暂停时能够clearInterval(print)
+//   print = runTimer();
+// };
 
 // let slowPlayFeature = () => {
 //   pauseTimer();
@@ -108,6 +137,25 @@ btnFast.onclick = () => {
 //   pauseTimer();
 //   timerSpeed = 0;
 //   print = runTimer();
+// };
+
+// // 慢速功能
+// btnSlow.onclick = () => {
+//   timerSpeed = 400;
+//   // 这里的playFeature包含了清除计时器的功能
+//   playFeature();
+// };
+
+// // 常速功能
+// btnNormal.onclick = () => {
+//   timerSpeed = 100;
+//   playFeature();
+// };
+
+// // 快速功能
+// btnFast.onclick = () => {
+//   timerSpeed = 0;
+//   playFeature();
 // };
 
 // // 播放功能
