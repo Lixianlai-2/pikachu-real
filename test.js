@@ -1,7 +1,7 @@
 import cssString from "./css.js";
 
-let textPart = document.querySelector(".textPart");
-let cssPart = document.querySelector(".css");
+const textPart = document.querySelector(".textPart");
+const cssPart = document.querySelector(".css");
 const btnPause = document.querySelector(".btnPause");
 const btnPlay = document.querySelector(".btnPlay");
 const btnSlow = document.querySelector(".btnSlowSpeed");
@@ -10,7 +10,7 @@ const btnFast = document.querySelector(".btnFastSpeed");
 
 let n = 0;
 // 设置播放速度
-let timerSpeed = 150;
+let timerSpeed = 100;
 
 // -------------------------------------------
 // 页面的渲染
